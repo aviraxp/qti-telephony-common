@@ -416,34 +416,9 @@
     .param p1, "slotId"    # I
 
     .prologue
-    .line 445
-    sget-object v1, Lcom/qualcomm/qti/internal/telephony/QtiUiccCardProvisioner;->sManualProvLock:Ljava/lang/Object;
-
-    monitor-enter v1
-
-    .line 446
-    :try_start_3
-    iget-object v0, p0, Lcom/qualcomm/qti/internal/telephony/QtiUiccCardProvisioner;->mProvisionStatus:[Lcom/qualcomm/qti/internal/telephony/QtiUiccCardProvisioner$UiccProvisionStatus;
-
-    aget-object v0, v0, p1
-
-    invoke-virtual {v0}, Lcom/qualcomm/qti/internal/telephony/QtiUiccCardProvisioner$UiccProvisionStatus;->getCurrentState()I
-    :try_end_a
-    .catchall {:try_start_3 .. :try_end_a} :catchall_d
-
-    move-result v0
-
-    monitor-exit v1
+	const/4 v0, 0x1
 
     return v0
-
-    .line 445
-    :catchall_d
-    move-exception v0
-
-    monitor-exit v1
-
-    throw v0
 .end method
 
 .method public static getInstance()Lcom/qualcomm/qti/internal/telephony/QtiUiccCardProvisioner;
